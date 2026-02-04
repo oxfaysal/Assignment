@@ -1,13 +1,44 @@
 void main() {
 
-  // Assignment: Working with Sets in Dart
+  // Weight = 70 KG
+  // Height = 1.75 Meters
 
-  Set<int> A = {1, 2, 3, 4, 5};
-  Set<int> B = {4, 5, 6, 7, 8};
+  double bmi = calculateBMI(70, 1.75);
+  print("Your BMI is : $bmi");
 
-  for(int result in A.union(B)){
-    print(result);
+  /*
+
+ // Perfect Score : 100
+
+  double weight = 70;
+  double height = 1.75 ;
+
+  double bmi = calculateBMI(weight, height);
+  print("Your BMI is : $bmi");
+
+*/
+
+
+
+  String category = getBMICategory(bmi);
+  print("Category : $category");
+
+
+}
+
+double calculateBMI(double weight, double height) {
+  return weight / (height * height);
+}
+
+
+String getBMICategory(double bmi){
+  if(bmi < 18.5){
+    return 'Underweight';
+  } else if(bmi < 25){
+    return 'Normal';
+  } else if (bmi < 30){
+    return'Overweight';
+  } else {
+    return 'Obese';
   }
-
-
 }
