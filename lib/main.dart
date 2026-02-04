@@ -1,44 +1,66 @@
+import 'dart:io';
+
 void main() {
 
-  // Weight = 70 KG
-  // Height = 1.75 Meters
+  print('Enter driver name:');
+  String? name = stdin.readLineSync();
 
-  double bmi = calculateBMI(70, 1.75);
-  print("Your BMI is : $bmi");
+  print('Enter driver age:');
+  String? ageInput = stdin.readLineSync();
+  int age = int.parse(ageInput ?? '0');
 
-  /*
+  print('Enter vehicle type:');
+  String? vehicle = stdin.readLineSync();
 
- // Perfect Score : 100
-
-  double weight = 70;
-  double height = 1.75 ;
-
-  double bmi = calculateBMI(weight, height);
-  print("Your BMI is : $bmi");
-
-*/
+  Driver driver = Driver(name!, age, vehicle!);
+  print('\n Driver Information: ${driver.getInfo()} \n\n');
 
 
 
-  String category = getBMICategory(bmi);
-  print("Category : $category");
+  print('Enter distance in km:');
+  String? distanceInput = stdin.readLineSync();
+  double distance = double.parse(distanceInput ?? '0');
 
+  BikeRide bikeRide = BikeRide();
 
-}
-
-double calculateBMI(double weight, double height) {
-  return weight / (height * height);
+  print('Ride Fare Calculation:');
+  printFare(bikeRide, distance);
 }
 
 
-String getBMICategory(double bmi){
-  if(bmi < 18.5){
-    return 'Underweight';
-  } else if(bmi < 25){
-    return 'Normal';
-  } else if (bmi < 30){
-    return'Overweight';
-  } else {
-    return 'Obese';
+
+class Person {
+  String _name;
+  int _age;
+  Person(this._name, this._age);
+  String get name => _name;
+  int get age => _age;
+}
+
+class Driver extends Person {
+  String vehicle;
+  Driver(String name, int age, this.vehicle) : super(name, age);
+
+  @override
+  String getInfo() {
+    return 'Name: $name, Age: $age, Vehicle: $vehicle';
   }
+}
+
+
+abstract class Ride {
+  double calculateFare(double distance);
+}
+
+class BikeRide implements Ride {
+  @override
+  double calculateFare(double distance) {
+    return distance * 20.0;
+  }
+}
+
+
+void printFare(Ride ride, double distance) {
+  double fare = ride.calculateFare(distance);
+  print('Distance: ${distance}km, Fare: ${fare.toStringAsFixed(2)} Taka');
 }
