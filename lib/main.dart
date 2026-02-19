@@ -1,3 +1,4 @@
+import 'package:assignment/home_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,12 +11,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Assignment 4',
+      title: 'Tasbih Counter application',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: .fromSeed(seedColor: Colors.indigo),
       ),
-      home: const MyHomePage(title: 'Counter App'),
+      home: HomePage(),
     );
   }
 }
@@ -108,6 +109,12 @@ class _MyHomePageState extends State<MyHomePage> {
                     onPressed: _resetCounter,
                     child: Text("Reset"),
                   ),
+
+
+                  // Elevate Button Create
+
+
+
                 ],
               ),
             ],
