@@ -192,7 +192,7 @@ class _HomePageState extends State<HomePage> {
                         _textButton("Stop", () {
                           stopTimer();
                         }),
-                        _controlButton(Icons.pause, () {
+                        _controlButton(isRunning ? Icons.pause : Icons.play_arrow, () {
                           startTimer();
                         }),
                       ],
@@ -303,10 +303,7 @@ class _HomePageState extends State<HomePage> {
         image: DecorationImage(
           image: AssetImage(asset),
           fit: BoxFit.cover,
-          colorFilter: ColorFilter.mode(
-            overlay.withOpacity(0.8),
-            BlendMode.darken,
-          ),
+          colorFilter: ColorFilter.mode(overlay.withOpacity(0.8), BlendMode.darken,),
         ),
       ),
     );
