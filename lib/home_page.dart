@@ -22,11 +22,6 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  void _resetCounter() {
-    setState(() {
-      counter = 0;
-    });
-  }
 
   String formatTime(int totalSeconds) {
     int hours = totalSeconds ~/ 3600;
@@ -189,8 +184,10 @@ class _HomePageState extends State<HomePage> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         _controlButton(Icons.refresh, () {
-                          _resetCounter();
-                          seconds = 0;
+                          setState(() {
+                            counter = 0;
+                            seconds = 0;
+                          });
                         }),
                         _textButton("Stop", () {
                           stopTimer();
@@ -211,41 +208,18 @@ class _HomePageState extends State<HomePage> {
               SizedBox(height: 26),
 
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Container(
-                    height: 150,
-                    width: MediaQuery.of(context).size.width * 0.43,
-                    padding: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      image: DecorationImage(
-                        image: AssetImage("assets/images/bg_2.png"),
-                        fit: BoxFit.cover,
-                        colorFilter: ColorFilter.mode(
-                          Color(0xFF000000).withOpacity(0.72),
-                          BlendMode.darken,
-                        ),
-                      ),
+                  Expanded(
+                    child: _themeThumbnail(
+                      "assets/images/bg_2.png",
+                      const Color(0xFF000000),
                     ),
                   ),
-
-                  SizedBox(width: 20),
-
-                  Container(
-                    height: 150,
-                    width: MediaQuery.of(context).size.width * 0.43,
-                    padding: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      image: DecorationImage(
-                        image: AssetImage("assets/images/bg_3.png"),
-                        fit: BoxFit.cover,
-                        colorFilter: ColorFilter.mode(
-                          Color(0xFF183282).withOpacity(0.8),
-                          BlendMode.darken,
-                        ),
-                      ),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: _themeThumbnail(
+                      "assets/images/bg_3.png",
+                      const Color(0xFF183282),
                     ),
                   ),
                 ],
@@ -255,7 +229,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       bottomNavigationBar: Container(
-        decoration:  BoxDecoration(
+        decoration: BoxDecoration(
           color: Color(0xFF764CA5).withOpacity(0.7),
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(15),
@@ -317,6 +291,23 @@ class _HomePageState extends State<HomePage> {
         ),
         alignment: Alignment.center,
         child: Text(text, style: AppTextStyle.timerParpal16W700),
+      ),
+    );
+  }
+
+  Widget _themeThumbnail(String asset, Color overlay) {
+    return Container(
+      height: 150,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(5),
+        image: DecorationImage(
+          image: AssetImage(asset),
+          fit: BoxFit.cover,
+          colorFilter: ColorFilter.mode(
+            overlay.withOpacity(0.8),
+            BlendMode.darken,
+          ),
+        ),
       ),
     );
   }
