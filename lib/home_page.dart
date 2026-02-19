@@ -258,8 +258,8 @@ class _HomePageState extends State<HomePage> {
         decoration:  BoxDecoration(
           color: Color(0xFF764CA5).withOpacity(0.7),
           borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(20),
-            bottomRight: Radius.circular(20),
+            bottomLeft: Radius.circular(15),
+            bottomRight: Radius.circular(15),
           ),
         ),
         child: BottomNavigationBar(
