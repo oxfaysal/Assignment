@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../conts/App_Color.dart';
+import '../conts/textStyle.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton({
@@ -10,12 +10,12 @@ class CustomButton extends StatelessWidget {
     required this.color,
     required this.width,
     required this.height,
-    this.radius = 10,
+    this.radius = 12,
   });
 
   final VoidCallback onPressed;
   final String text;
-  final int color;
+  final Color color;
   final double width;
   final double height;
   final double radius;
@@ -28,10 +28,10 @@ class CustomButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          backgroundColor: Color(color),
+          backgroundColor: color,
           foregroundColor: Color(0xFFffffff),
           elevation: 4,
-          shadowColor: Color(color).withOpacity(0.5),
+          shadowColor: color.withOpacity(0.5),
           surfaceTintColor: Colors.transparent,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(radius),

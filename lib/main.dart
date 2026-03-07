@@ -1,8 +1,8 @@
-import 'package:assignment/conts/App_Color.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:assignment/conts/textStyle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'conts/appColor.dart';
 import 'widgets/customButton.dart';
 
 void main() {
@@ -28,6 +28,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
 
   int foodItem = 1;
+
   void _incrementCounter() {
     setState(() {
       foodItem++;
@@ -95,8 +96,8 @@ class _HomePageState extends State<HomePage> {
                           value: 0.5,
                           onChanged: (value) {},
                           padding: EdgeInsets.all(0),
-                          activeColor: Color(0xFFEF2A39),
-                          inactiveColor: Colors.grey.withOpacity(0.2),
+                          activeColor: AppColor.redColor,
+                          inactiveColor: AppColor.secondaryColor.withOpacity(0.1),
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -121,7 +122,7 @@ class _HomePageState extends State<HomePage> {
                             CustomButton(
                               onPressed: _decrementCounter,
                               text: '-',
-                              color: 0xFFEF2A39,
+                              color: AppColor.redColor,
                               width: 40,
                               height: 40,
                             ),
@@ -129,7 +130,7 @@ class _HomePageState extends State<HomePage> {
                             CustomButton(
                               onPressed: _incrementCounter,
                               text: '+',
-                              color: 0xFFEF2A39,
+                              color: AppColor.redColor,
                               width: 40,
                               height: 40,
                             ),
@@ -150,7 +151,7 @@ class _HomePageState extends State<HomePage> {
                     child: CustomButton(
                       onPressed: (){},
                       text: "\$8.24",
-                      color: 0xFFEF2A39,
+                      color: AppColor.redColor,
                       width: double.infinity,
                       height: 70,
                       radius: 20,
@@ -161,7 +162,7 @@ class _HomePageState extends State<HomePage> {
                     child: CustomButton(
                       onPressed: (){},
                       text: "ORDER NOW",
-                      color: 0xFF3C2F2F,
+                      color: AppColor.primaryColor,
                       width: double.infinity,
                       height: 70,
                       radius: 20,
